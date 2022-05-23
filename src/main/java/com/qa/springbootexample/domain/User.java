@@ -13,13 +13,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "firstname", nullable = false)
+	@Column(name = "firstname", nullable = false) // This changes the column name to firstname
 	private String firstName; // first_name
 	
 	@Column(nullable = false)
 	private String lastName; // last_name
 	
-	@Column(nullable = false)
+	@Column(nullable = false) // could also set unique=true, length=some length
 	private String username; // username
 
 	// Default constructor - Spring uses this
