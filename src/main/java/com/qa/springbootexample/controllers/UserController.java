@@ -1,6 +1,5 @@
 package com.qa.springbootexample.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,8 +46,8 @@ public class UserController {
 	}
 
 	// Delete -> Delete Request - @DeleteMapping
-	@DeleteMapping("/delete/{id}")
-	public User delete(@PathVariable long id) {
-		return service.delete(id);
-	}
+//	@DeleteMapping("/delete/{id}")
+//	public User delete(@PathVariable long id) {
+//		return service.delete(id);
+//	}
 }
