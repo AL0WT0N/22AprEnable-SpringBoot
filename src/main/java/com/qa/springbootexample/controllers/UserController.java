@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +24,16 @@ public class UserController {
 		return "Hello";
 	}
 	
+	// Read ALL
 	@GetMapping("/getAll")
 	public List<User> getAll() {
 		return users;
+	}
+	
+	// Read ALL
+	@GetMapping("/getById/{id}")
+	public User getById(@PathVariable long id) {
+		return users.get((int)id);
 	}
 	
 	// Create -> Post Request - @PostMapping
@@ -35,6 +44,16 @@ public class UserController {
 	}
 	
 	// Update -> Put/Patch Request - @PutMapping
+	@PutMapping("/update/{id}")
+	public User update(@PathVariable long id, @RequestBody User user) {
+		// Remove the original user
+		users.remove((int)id);
+		// Add the updated user
+		users.add((int)id, user);
+		// Return the updated user
+		return users.get((int)id);
+	}
+	
 	
 	// Delete -> Delete Request - @DeleteMapping
 	
