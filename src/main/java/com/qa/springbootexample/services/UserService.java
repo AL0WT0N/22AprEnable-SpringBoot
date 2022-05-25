@@ -3,6 +3,8 @@ package com.qa.springbootexample.services;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.qa.springbootexample.domain.User;
+import com.qa.springbootexample.exceptions.UserNotFoundException;
+import com.qa.springbootexample.exceptions.UserNotFoundExceptionWithID;
 import com.qa.springbootexample.repo.UserRepo;
 
 @Service
@@ -26,7 +28,9 @@ public class UserService {
 	
 	// Read By ID
 	public User getById(long id) {
-		return repo.findById(id).get();
+//		return repo.findById(id).get();
+//		return repo.findById(id).orElseThrow(UserNotFoundException::new);
+		return repo.findById(id).orElseThrow(() -> new UserNotFoundExceptionWithID(id));
 	}
 	
 	// Read By FirstName
