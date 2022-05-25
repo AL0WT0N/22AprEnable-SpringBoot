@@ -28,14 +28,14 @@ public class UserController {
 	// Read -> Get Request -@GetMapping
 	// Read ALL
 	@GetMapping("/getAll")
-	public List<User> getAll() {
-		return service.getAll();
+	public ResponseEntity<List<User>> getAll() {
+		return new ResponseEntity<List<User>>(this.service.getAll(), HttpStatus.OK);
 	}
 	
 	// Read By ID
 	@GetMapping("/getById/{id}")
-	public User getById(@PathVariable long id) {
-		return service.getById(id);
+	public ResponseEntity<User> getById(@PathVariable long id) {
+		return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
 	}
 	
 	// Create -> Post Request - @PostMapping
@@ -46,13 +46,13 @@ public class UserController {
 	
 	// Update -> Put/Patch Request - @PutMapping
 	@PutMapping("/update/{id}")
-	public User update(@PathVariable long id, @RequestBody User user) {
-		return service.update(id, user);
+	public ResponseEntity<User> update(@PathVariable long id, @RequestBody User user) {
+		return new ResponseEntity<User>(service.update(id, user), HttpStatus.ACCEPTED);
 	}
 
 //	 Delete -> Delete Request - @DeleteMapping
 	@DeleteMapping("/delete/{id}")
-	public boolean delete(@PathVariable long id) {
-		return service.delete(id);
+	public ResponseEntity<Boolean> delete(@PathVariable long id) {
+		return new ResponseEntity<Boolean>(service.delete(id), HttpStatus.NO_CONTENT);
 	}
 }
