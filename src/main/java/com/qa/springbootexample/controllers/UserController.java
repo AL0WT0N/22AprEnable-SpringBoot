@@ -45,9 +45,9 @@ public class UserController {
 		return service.update(id, user);
 	}
 
-	// Delete -> Delete Request - @DeleteMapping
-//	@DeleteMapping("/delete/{id}")
-//	public User delete(@PathVariable long id) {
-//		return service.delete(id);
-//	}
+//	 Delete -> Delete Request - @DeleteMapping
+	@DeleteMapping("/delete/{id}")
+	public boolean delete(@PathVariable long id) {
+		return service.delete(id);
+	}
 }

@@ -43,7 +43,9 @@ public class UserService {
 	}
 
 	// Delete
-//	public User delete(long id) {
-//		
-//	}	
+	public boolean delete(long id) {
+		repo.deleteById(id);
+		return !repo.existsById(id);
+	}	
+
 }
