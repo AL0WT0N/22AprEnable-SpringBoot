@@ -29,6 +29,11 @@ public class UserService {
 		return repo.findById(id).get();
 	}
 	
+	// Read By FirstName
+	public List<User> getByFirstName(String name) {
+		return repo.findByFirstName(name);
+	}
+	
 	// Update
 	public User update(long id, User user) {
 		// First, get the existing entry

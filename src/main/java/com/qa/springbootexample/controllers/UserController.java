@@ -38,6 +38,11 @@ public class UserController {
 		return new ResponseEntity<User>(service.getById(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/getByFirstName/{name}")
+	public ResponseEntity<List<User>> getByFirstName(@PathVariable String name) {
+		return new ResponseEntity<List<User>>(service.getByFirstName(name), HttpStatus.OK);
+	}
+	
 	// Create -> Post Request - @PostMapping
 	@PostMapping("/create")
 	public ResponseEntity<User> create(@RequestBody User user) {
@@ -53,6 +58,7 @@ public class UserController {
 //	 Delete -> Delete Request - @DeleteMapping
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Boolean> delete(@PathVariable long id) {
-		return new ResponseEntity<Boolean>(service.delete(id), HttpStatus.NO_CONTENT);
+		return service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }
