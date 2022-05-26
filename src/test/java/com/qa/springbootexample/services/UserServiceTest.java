@@ -31,14 +31,18 @@ public class UserServiceTest {
 	// ReadAll Test
 	@Test
 	public void getAllTest() {
+		// Creating any expected output and inputs if necessary
 		List<User> output = new ArrayList<>();
 		output.add(new User(1L, "Tom", "Jones", "tjones1"));
 		
+		// Mocking the dependency (repo)
 		Mockito.when(repo.findAll()).thenReturn(output);
 		
+		// Asserting the actual test method's output
 		assertEquals(output, service.getAll());
 		
-		Mockito.verify(repo, Mockito.times(1)).findAll(); // Not Required
+		// Verifying the number of times a mock method ran - Not Required
+		Mockito.verify(repo, Mockito.times(1)).findAll(); 
 	}
 
 	// Read By ID Test
