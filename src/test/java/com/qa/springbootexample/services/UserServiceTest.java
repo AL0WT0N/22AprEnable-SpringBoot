@@ -11,10 +11,13 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+
 import com.qa.springbootexample.domain.User;
 import com.qa.springbootexample.repo.UserRepo;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class UserServiceTest {
 
 	@Autowired
@@ -70,13 +73,6 @@ public class UserServiceTest {
 		Mockito.verify(repo, Mockito.times(1)).findById(1L);
 	}
 
-	// Read By FirstName Test
-	@Disabled
-	@Test
-	public void getByFirstNameTest() {
-
-	}
-
 	// Update Test
 	@Test
 	public void updateTest() {
@@ -96,6 +92,13 @@ public class UserServiceTest {
 		Mockito.verify(repo, Mockito.times(1)).saveAndFlush(output);
 		Mockito.verify(repo, Mockito.times(1)).findById(1L);
 	}
+
+	// Read By FirstName Test
+	@Disabled
+	@Test
+	public void getByFirstNameTest() {
+
+	}
 	
 	// Delete Test
 	@Disabled
@@ -103,5 +106,4 @@ public class UserServiceTest {
 	public void deleteTest() {
 
 	}
-
 }
